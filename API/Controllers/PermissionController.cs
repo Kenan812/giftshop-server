@@ -38,7 +38,6 @@ namespace API.Controllers
         public async Task<ActionResult<int>> CreatePermission(CreatePermissionDto data)
         {
             int addedId = await _permissionService.CreateAsync(data);
-            if (addedId == -1) return BadRequest("Unable to add permission");
             return Ok(addedId);
         }
         
@@ -48,7 +47,6 @@ namespace API.Controllers
             try
             {
                 int updatedId = await _permissionService.UpdateAsync(data);
-                if (updatedId == -1) return BadRequest("Unable to update permission");
                 return Ok(updatedId);
             }
             catch (NullReferenceException)
